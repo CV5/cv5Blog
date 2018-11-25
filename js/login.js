@@ -1,3 +1,5 @@
+
+
 function registrarse(){
      
      var email =  $("#email").val();
@@ -17,17 +19,31 @@ function registrarse(){
             'Content-Type': 'application/json'
           }
         }).then(res => res.json())
-        .then(response => console.log('Success:', JSON.stringify(response)))
-        .catch(error => console.error('Error:', error));
-if (response.token != null){
-     alert("Bienvenido");
-}else{
+        .then(response => {
+          if(response.token != null){
+          localStorage.setItem("TOKEN",response.token)
+          location.href="inicio.html";
+          console.log('Success:', JSON.stringify(response))
+        }else{
+          alert("El usuario o la contraseña esta incorrecta.");
 
-     alert("Maldito campesino");
+        }
+        })
+        .catch(error => console.error('Error:', error));
+
+     
+
 }
-}
+
+
 
 $(document).ready(function(){
+     var token = localStorage.getItem("TOKEN");
+     if (token != null){
+          location.href="inicio.html";
+
+     }
+
      $("#btn").click(function(){
           registrarse();
      });
