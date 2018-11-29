@@ -5,11 +5,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Optional JavaScript -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/mustache.min.js"></script>
+    <script src="js/moment.js"></script>
+
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.15/css/mdb.min.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style>
@@ -66,21 +80,29 @@
 
         <!-- articulos -->
         <div class="row mb-5">
-            <div class="col 12 col-md-9">
-              <div class="row">
+           
+          <div class="col 12 col-md-9"id="articulo" >
+           <!-- 00    <div class="row mb-5 articulos">
                 <div class="col-3">
                     <img src="img/face.png" class="img-fluid">
                     <p class="lead text-center">02/11/2018</p>
                 </div> 
                 <div class="col-9">
-                    <a href="#"><h3>Lorem ipsum dolor sit ametLorem ipsum dolor</h3</a>
-                    <a href="#"><span class="badge badge-primary">html</span></a> 
-                    <a href="#"><span class="badge badge-success">css</span></a> 
-                    <p><h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam numquam officiis perferendis nostrum soluta tenetur ratione, adipisci repudiandae natus voluptatum totam nulla corrupti alias saepe. Eveniet consequatur tempore magnam natus.</h4>
-                  </div>
+
+                  <div id="articulo">
+                      
+
+
+                  </div>-->
+                   </div>
+                  
               </div>
+              
+              
 
           </div>
+          
+          
                <!--inicio aside --> 
                <div class="col-12 col-md-3">
                   <div class="card border-primary mb-3" style="max-width: 18rem;">
@@ -102,5 +124,33 @@
 
       </div>
     <!-- fin Main--> 
+
+  
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center">© 2018 Copyright:
+    <a href="#"> cv5blog.com</a>
+  </div>
+  <!-- Copyright -->
+  <script id="template-articulo" type="text/template">
+      <div class="row mb-5 articulos">
+        <div class="col-3">
+          <img src="img/face.png" class="img-fluid">
+          <p class="lead text-center">{{FechaStr}}</p>
+        </div>
+        <div class="col-9">
+          <div id="articulo_{{id}}">
+            <a href="JavaScript:void(0)">
+              <h3 class="tituloArt" data-id="{{id}}"> {{title}} </h3>
+            </a>
+            <a href="#"><span class="badge badge-primary">html</span></a>
+            <a href="#"><span class="badge badge-success">css</span></a>
+            <p>
+              <h4> {{body}} </h4>
+          </div>
+        </div>
+      </div>
+  </script>
+
   </body>
 </html>
