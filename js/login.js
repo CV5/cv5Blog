@@ -10,7 +10,7 @@ function registrarse(){
           password: password
      }
      
-     console.log(data);
+   
      
      fetch("http://68.183.27.173:8080/login", {
           method: 'POST', // or 'PUT'
