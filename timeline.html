@@ -44,8 +44,8 @@
   <!-- inicio Menu-->
   <div class="container-fluid bg-dark fixed-top text-center">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
-      <a class="navbar-brand" href="#">
-        <img src="https://getbootstrap.com/docs/4.1/assets/img/bootstrap-stack.png" width="30" height="30" alt="">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/logo.jpeg" width="30" height="30" alt="" class="rounded-circle">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -125,6 +125,12 @@
             <h4> {{body}} </h4>
             <h5>creado por: {{userName}} </h5>
           </p>
+          
+        <div class="card-footer" id="liked-div">
+          <a href="JavaScript:void(0)" class="card-link"><i class="fa {{likedClass}} liked liked-{{id}}" data-id="{{id}}" data-liked={{liked}} id="liked-button"></i>  {{likes}} Like</a>
+          <a href="#" class="card-link"><i class="fa fa-comment"></i> {{likes}} Comment</a>
+          <a href="#" class="card-link"><i class="fa fa-eye"></i>  {{views}} views</a>
+      </div>
         </div>
         
       </div>
