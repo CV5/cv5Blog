@@ -14,17 +14,27 @@ $(document).ready(function () {
         .then(data => data.json())
         .then(data => {
 
-
+            var templateTags= $('#template-tags').html();
             var template = $('#template-post').html();
             Mustache.parse(template); // optional, speeds up future uses
-
+            Mustache.parse(templateTags); // optional, speeds up future uses
+            $("#tagsList").html('');
 
             $("#post-details").html('');
 
 
             let arrayMustache = [];
+            let arrayMustacheTags = [];
 
             let obj = data;
+            let tagsObj = obj.tags
+
+            for (i in obj.tags) {
+                
+                arrayMustacheTags.push(Mustache.render(templateTags, tagsObj[i]));
+
+            }
+
 
             obj.FechaStr = moment(new Date(obj.createdAt)).format('DD/MM/YYYY');
             document.title = obj.title + " - CV5 Blog";
@@ -33,6 +43,9 @@ $(document).ready(function () {
 
 
             $("#post-details").append(arrayMustache.join(''));
+            console.log(arrayMustache)
+            $("#tagsList").append(arrayMustacheTags.join(''));
+            console.log(obj.tags)
         })
 
 
@@ -55,7 +68,7 @@ $(document).ready(function () {
             for (i in comments) {
             
                 let commentsObj = comments[i]
-                commentsObj.createdAt = moment(new Date(commentsObj.createdAt)).format('DD/MM/YYYY');
+                commentsObj.createdAt = moment(new Date(commentsObj.createdAt)).format('hh : mm - DD/MM/YYYY');
     
             $("#comments-post").html('');
 

@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
   <title>Blog Post </title>
@@ -22,6 +23,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/blog-post.css" rel="stylesheet">
+  <link href="css/comments.css" rel="stylesheet">
 
 </head>
 
@@ -29,24 +31,24 @@
 
   <!-- inicio Menu-->
   <div class="container-fluid bg-dark fixed-top text-center">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
-      <a class="navbar-brand" href="#">
-        <img src="https://getbootstrap.com/docs/4.1/assets/img/bootstrap-stack.png" width="30" height="30" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="#">Perfil</a>
-          <a class="nav-item nav-link" href="#">Logout</a>
-          <div><a href="#" class="btn btn-danger ">Crear un articulo</a></div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
+        <a class="navbar-brand" href="index.html">
+          <img src="img/logo.jpeg" width="30" height="30" alt="" class="rounded-circle">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Usuarios</a>
+            <a class="nav-item nav-link" href="#">Etiquetas</a>
+            <div><a href="#" class="btn btn-danger ">Crear post</a></div>
+          </div>
         </div>
-      </div>
-    </nav>
-  </div>
+      </nav>
+    </div>
   <!-- fin Menu-->
   <!-- inicio slide-->
 
@@ -96,16 +98,13 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">Web Design</a>
-                    </li>
-                    <li>
-                      <a href="#">HTML</a>
-                    </li>
-                    <li>
-                      <a href="#">Freebies</a>
-                    </li>
+                  <ul class="list-unstyled mb-0" >
+                    <div  id="tagsList">
+
+
+                    </div>
+                   
+                    
                   </ul>
                 </div>
               </div>
@@ -150,14 +149,35 @@
       
   </script>
   <script id="template-coments" type="text/template">
-    <div class="media mb-4 fa-comments">
+    <!-- <div class="media mb-4 fa-comments">
     <div class="media-body">
-      <h5 class="mt-0">{{userName}}</h5>
-      {{body}}
+      <h4 class="mt-0 lead">{{body}}</h4>
+      <h5>creado por: {{userName}} {{createAt}}</h5>
     </div>
     
   </div>
-</div>
+</div> -->
+<section class="comments">
+    <article class="comment">
+      <a class="comment-img" href="#non">
+        <img src="https://pbs.twimg.com/profile_images/444197466133385216/UA08zh-B.jpeg" alt="" width="50" height="50">
+      </a>
+      <div class="comment-body">
+        <div class="text">
+          <p>{{body}}</p>
+        </div>
+        <p class="attribution">por <a href="#non">{{userName}}</a> at {{createdAt}}</p>
+      </div>
+    </article>
+     
+  </section>
+
+</script>
+
+<script id="template-tags" type="text/template">
+<li>
+  <a href="#">asa{{.}}</a>
+</li>
 </script>
 
 </body>

@@ -54,10 +54,9 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav ml-auto">
           <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="#">Features</a>
-          <a class="nav-item nav-link" href="#">Pricing</a>
-          <a class="nav-item nav-link mr-md-4" href="#">Disabled</a>
-          <div><a href="#" class="btn btn-danger ">Contacto</a></div>
+          <a class="nav-item nav-link" href="#">Usuarios</a>
+          <a class="nav-item nav-link" href="#">Etiquetas</a>
+          <div><a href="#" class="btn btn-danger ">Crear post</a></div>
         </div>
       </div>
     </nav>
@@ -87,14 +86,7 @@
       <!--fin articulos -->
       <!--inicio aside -->
       <div class="col-12 col-md-3">
-        <div class="card border-primary mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-          <div class="card-body text-primary">
-            <h5 class="card-title">Primary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-          </div>
-        </div>
+       <div id="me"></div>
       </div>
       <!--fin aside -->
     </div>
@@ -118,9 +110,10 @@
           <a href="JavaScript:void(0)">
             <h3 class="tituloArt" data-id="{{id}}"> {{title}} </h3>
           </a>
-          <!-- <a href="#"><span class="badge badge-primary">html</span></a> -->
+          {{#tags}}<a href="#"><span class="badge badge-success">{{.}}</span></a> {{/tags}}
    
-          <a href="#"><span class="badge badge-success">{{tags}}</span></a>
+        
+       
           <p>
             <h4> {{body}} </h4>
             <h5>creado por: {{userName}} </h5>
@@ -139,7 +132,15 @@
     </div>
       
   </script>
-
+<script id="template-me" type="text/template">
+ <div class="card border-primary mb-3" style="max-width: 18rem;">
+          <div class="card-header">{{name}}</div>
+          <div class="card-body text-primary">
+            <h5 class="card-title">{{email}}</h5>
+            <p class="card-text">{{name}} fue creado {{createdAt}} y tiene {{posts}} post</p>
+          </div>
+        </div>
+</script>
 </body>
 
 </html>
