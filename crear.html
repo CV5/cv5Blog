@@ -8,10 +8,16 @@
   <!-- Optional JavaScript -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-  <script src="js/timeline.js"></script>
-  <script src="js/mustache.min.js"></script>
-  <script src="js/moment.js"></script>
 
+  <meta charset="utf-8">
+ 
+  <!-- Include external CSS. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+
+  <!-- Include Editor style. -->
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -62,14 +68,7 @@
     </nav>
   </div>
   <!-- fin Menu-->
-  <!-- inicio slide-->
-  <div class="container fluid slider  d-flex justify-content-center align-items-center">
-    <div class="text-center text-white">
-      <h3>Aprende JavaScript en CV5 Blog</h3>
-      <h1 class="display">Contenido de interes para tus necesidades</h1>
-    </div>
-  </div>
-  <!-- fin slide-->
+  
   <!-- inicio Main-->
 
   <div class="container mb-5">
@@ -80,16 +79,34 @@
     <!-- articulos -->
     <div class="row mb-5">
       <div class="col 12 col-md-9" id="articulo">
-
-
+          <form>
+              <div class="form-group">
+                <label >Titulo</label>
+                <input type="text" class="form-control" placeholder="titulo">
+                </div>
+              <div class="form-group">
+              <!-- Create a tag that we will use as the editable area. -->
+    <!-- You can use a div tag as well. -->
+    <textarea></textarea>
+ 
+    <!-- Include external JS libs. -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+ 
+    <!-- Include Editor JS files. -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/js/froala_editor.pkgd.min.js"></script>
+ 
+    <!-- Initialize the editor. -->
+    <script> $(function() { $('textarea').froalaEditor() }); </script>
       </div>
-      <!--fin articulos -->
-      <!--inicio aside -->
-      <div class="col-12 col-md-3">
-       <div id="me"></div>
-      </div>
-      <!--fin aside -->
-    </div>
+     
+              
+              </div>
+              
+              <button type="button" class="btn btn-primary">publicar</button>
+            </form>
+
   </div>
   <!-- fin Main-->
   <!-- Footer -->
@@ -98,49 +115,6 @@
       <p class="m-0 text-center text-white">Copyright &copy; Cv5 Blog 2018</p>
     </div>
   </footer>
-  <script id="template-articulo" type="text/template">
-
-    <div class="row mb-5 ">
-      <div class="col-3">
-        <img src="img/js.jpg" class="img-fluid">
-        <p class="lead text-center">{{FechaStr}}</p>
-      </div>
-      <div class="col-9 col-md-9">
-        <div id="articulo_{{id}}">
-          <a href="JavaScript:void(0)">
-            <h3 class="tituloArt" data-id="{{id}}"> {{title}} </h3>
-          </a>
-          {{#tags}}<a href="#"><span class="badge badge-success">{{.}}</span></a> {{/tags}}
-   
-        
-       
-          <p>
-            <h4> {{body}} </h4>
-            <h5>creado por: {{userName}} </h5>
-          </p>
-          
-        <div class="card-footer" id="liked-div">
-          <a href="JavaScript:void(0)" class="card-link"><i class="fa {{likedClass}} liked liked-{{id}}" data-id="{{id}}" data-liked={{liked}} id="liked-button"></i>  {{likes}} Like</a>
-          <a href="#" class="card-link"><i class="fa fa-comment"></i> {{likes}} Comment</a>
-          <a href="#" class="card-link"><i class="fa fa-eye"></i>  {{views}} views</a>
-      </div>
-        </div>
-        
-      </div>
-      
-
-    </div>
-      
-  </script>
-<script id="template-me" type="text/template">
- <div class="card border-primary mb-3" style="max-width: 18rem;">
-          <div class="card-header">{{name}}</div>
-          <div class="card-body text-primary">
-            <h5 class="card-title">{{email}}</h5>
-            <p class="card-text">{{name}} fue creado {{createdAt}} y tiene {{posts}} post</p>
-          </div>
-        </div>
-</script>
 </body>
 
 </html>
