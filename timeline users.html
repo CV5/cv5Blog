@@ -8,7 +8,7 @@
   <!-- Optional JavaScript -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-  <script src="js/timeline.js"></script>
+  <script src="js/timelineUsers.js"></script>
   <script src="js/mustache.min.js"></script>
   <script src="js/moment.js"></script>
 
@@ -53,9 +53,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="timeline.html">Home <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="users.html">Usuarios</a>
-                <div><a href="crear.html" class="btn btn-danger">Crear post</a></div>
+                <div><a href="crear.html" class="btn btn-danger ">Crear post</a></div>
         </div>
       </div>
     </nav>
@@ -114,7 +114,7 @@
         
        
           <p>
-            <h4> {{{body}}} </h4>
+            <h4> {{body}} </h4>
             <h5>creado por: {{userName}} </h5>
           </p>
           

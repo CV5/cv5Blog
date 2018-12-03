@@ -6,7 +6,9 @@ $(document).ready(function () {
 
         location.href="index.html";
     }
-    fetch("http://68.183.27.173:8080/users/me   ", {
+    var userID = localStorage.getItem("currentUserId");
+console.log(userID);
+    fetch(`http://68.183.27.173:8080/users/${userID}`, {
         method: 'GET', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
@@ -27,12 +29,13 @@ $(document).ready(function () {
              let objMe = data;
              objMe.createdAt = moment(new Date(objMe.createdAt)).format('h:mm DD/MM/YYYY');
              arrayMustacheMe.push(Mustache.render(templateMe, objMe));
+          
              $("#me").append(arrayMustacheMe.join(''));
     })
 
 
 
-    fetch("http://68.183.27.173:8080/post", {
+    fetch(`http://68.183.27.173:8080/post?userId=${userID}`, {
             method: 'GET', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -57,6 +60,7 @@ $(document).ready(function () {
                 arrayMustache.push(Mustache.render(template, obj));
             };
             arrayMustache.reverse();
+            
             $("#articulo").append(arrayMustache.join(''));
            
         })

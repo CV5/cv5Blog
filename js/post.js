@@ -2,6 +2,10 @@ $(document).ready(function () {
     var t = document.querySelector('#post')
     var p = document.querySelector('#articulo')
     var token = localStorage.getItem("TOKEN");
+    if(token == null){
+
+        location.href="index.html";
+    }
     var currentid = localStorage.getItem("currentId");
     
     fetch("http://68.183.27.173:8080/post/" + currentid + "", {

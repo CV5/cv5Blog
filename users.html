@@ -44,24 +44,23 @@
 <body>
   <!-- inicio Menu-->
   <div class="container-fluid bg-dark fixed-top text-center">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
-      <a class="navbar-brand" href="index.html">
-        <img src="img/logo.jpeg" width="30" height="30" alt="" class="rounded-circle">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="users.html">Usuarios</a>
-          <a class="nav-item nav-link" href="#">Etiquetas</a>
-          <div><a href="#" class="btn btn-danger ">Crear post</a></div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
+        <a class="navbar-brand" href="timeline.html">
+          <img src="img/logo.jpeg" width="30" height="30" alt="" class="rounded-circle">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="timeline.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="users.html">Usuarios</a>
+                  <div><a href="crear.html" class="btn btn-danger ">Crear post</a></div>
+          </div>
         </div>
-      </div>
-    </nav>
-  </div>
+      </nav>
+    </div>
   <!-- fin Menu-->
   <!-- inicio slide-->
   <div class="container fluid slider  d-flex justify-content-center align-items-center">
@@ -81,7 +80,7 @@
 
   <script id="template-users" type="text/template">
       <div class="col-md-3 col-sm-4" id="users">
-              <div class="userBlock">
+              <div class="userBlock" id="user_{{id}}">
                   <div class="backgrounImg">
                       <img src="img/bg-2.png">
                   </div>
@@ -89,8 +88,9 @@
                       <img src="img/face.png">
                   </div>
                   <div class="userDescription">
-                      <h5>{{name}}</h5>
-                      <p>{{email}}</p>
+                    <a href="#">
+                       <h5 class="link" data-id="{{id}}">{{name}}</h5></a>
+                      <p class="link">{{email}}</p>
                       <div class="followrs">
                           <span class="number">{{posts}}</span>
                           <span>post</span>

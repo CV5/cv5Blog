@@ -2,6 +2,10 @@ var liked = true;
 
 $(document).ready(function () {
     var token = localStorage.getItem("TOKEN");
+    if(token == null){
+
+        location.href="index.html";
+    }
     fetch("http://68.183.27.173:8080/users", {
             method: 'GET', // or 'PUT'
             headers: {
@@ -28,12 +32,9 @@ $(document).ready(function () {
             $("#users").append(arrayMustache.join(''));
            
         })
-
-    // $('#articulo').on('click', '.tituloArt', function (e) {
-      
-    // });
-
-    // $('#articulo').on('click', '.liked', function (r) {
-       
-    // });
+        $('#users').on('click', '.link', function (e) {
+            localStorage.setItem("currentUserId", $(this).data('id'))
+            location.href = "timeline users.html";
+        });
+    
 });

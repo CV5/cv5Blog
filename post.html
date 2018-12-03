@@ -32,7 +32,7 @@
   <!-- inicio Menu-->
   <div class="container-fluid bg-dark fixed-top text-center">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="timeline.html">
           <img src="img/logo.jpeg" width="30" height="30" alt="" class="rounded-circle">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -41,10 +41,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Usuarios</a>
-            <a class="nav-item nav-link" href="#">Etiquetas</a>
-            <div><a href="#" class="btn btn-danger ">Crear post</a></div>
+            <a class="nav-item nav-link active" href="timeline.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="users.html">Usuarios</a>
+                  <div><a href="crear.html" class="btn btn-danger ">Crear post</a></div>
           </div>
         </div>
       </nav>
@@ -113,9 +112,7 @@
         </div>
       </div>
     </div>
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
@@ -143,7 +140,7 @@
       <hr>
 
       <!-- Post Content -->
-      <p class="lead">{{body}}</p>
+      <p class="lead">{{{body}}}</p>
       <hr>
 
       
@@ -160,7 +157,7 @@
 <section class="comments">
     <article class="comment">
       <a class="comment-img" href="#non">
-        <img src="https://pbs.twimg.com/profile_images/444197466133385216/UA08zh-B.jpeg" alt="" width="50" height="50">
+        <img src="img/face.png" alt="" width="50" height="50">
       </a>
       <div class="comment-body">
         <div class="text">
@@ -176,7 +173,7 @@
 
 <script id="template-tags" type="text/template">
 <li>
-  <a href="#">asa{{.}}</a>
+  <a href="#">{{.}}</a>
 </li>
 </script>
 

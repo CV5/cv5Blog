@@ -10,10 +10,11 @@
     crossorigin="anonymous"></script>
 
   <meta charset="utf-8">
- 
+
   <!-- Include external CSS. -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+  <script src="js/crear.js"></script>
 
   <!-- Include Editor style. -->
   <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
@@ -49,26 +50,25 @@
 <body>
   <!-- inicio Menu-->
   <div class="container-fluid bg-dark fixed-top text-center">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
-      <a class="navbar-brand" href="index.html">
-        <img src="img/logo.jpeg" width="30" height="30" alt="" class="rounded-circle">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="users.html">Usuarios</a>
-          <a class="nav-item nav-link" href="crear.html">Etiquetas</a>
-          <div><a href="#" class="btn btn-danger ">Crear post</a></div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
+        <a class="navbar-brand" href="timeline.html">
+          <img src="img/logo.jpeg" width="30" height="30" alt="" class="rounded-circle">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="timeline.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="users.html">Usuarios</a>
+                  <div><a href="crear.html" class="btn btn-danger ">Crear post</a></div>
+          </div>
         </div>
-      </div>
-    </nav>
-  </div>
+      </nav>
+    </div>
   <!-- fin Menu-->
-  
+
   <!-- inicio Main-->
 
   <div class="container mb-5">
@@ -79,42 +79,50 @@
     <!-- articulos -->
     <div class="row mb-5">
       <div class="col 12 col-md-9" id="articulo">
-          <form>
-              <div class="form-group">
-                <label >Titulo</label>
-                <input type="text" class="form-control" placeholder="titulo">
-                </div>
-              <div class="form-group">
-              <!-- Create a tag that we will use as the editable area. -->
-    <!-- You can use a div tag as well. -->
-    <textarea></textarea>
- 
-    <!-- Include external JS libs. -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
- 
-    <!-- Include Editor JS files. -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/js/froala_editor.pkgd.min.js"></script>
- 
-    <!-- Initialize the editor. -->
-    <script> $(function() { $('textarea').froalaEditor() }); </script>
-      </div>
-     
-              
-              </div>
-              
-              <button type="button" class="btn btn-primary">publicar</button>
-            </form>
+        <form>
+          <div class="form-group">
+            <h1><label>Titulo</label></h1>
+            <input type="text" class="form-control" placeholder="Escribe aquí tu titulo" id="titulo">
+          </div>
+          <div class="form-group">
 
+
+            <!-- Include external JS libs. -->
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+
+            <!-- Include Editor JS files. -->
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/js/froala_editor.pkgd.min.js"></script>
+
+            <div id="froala-editor">
+
+            </div>
+          </div>
+          <div id="master_div">
+            <div id="categories">
+
+            </div>
+            <div id="input">
+              <input type="text" value="" class="form-control" placeholder="etiquetas (divididas por ',')" id="tags" />
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" id="btnPublicar">Publicar</button>
+      </div>
+
+
+      </form>
+
+    </div>
+    <!-- fin Main-->
+    <!-- Footer -->
   </div>
-  <!-- fin Main-->
-  <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Cv5 Blog 2018</p>
     </div>
   </footer>
+
 </body>
 
 </html>
