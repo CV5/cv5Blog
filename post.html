@@ -20,7 +20,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
   <!-- Custom styles for this template -->
   <link href="css/blog-post.css" rel="stylesheet">
   <link href="css/comments.css" rel="stylesheet">
@@ -28,47 +29,36 @@
 </head>
 
 <body>
-
+ 
   <!-- inicio Menu-->
   <div class="container-fluid bg-dark fixed-top text-center">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
-        <a class="navbar-brand" href="timeline.html">
-          <img src="img/logo.jpeg" width="30" height="30" alt="" class="rounded-circle">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link active" href="timeline.html">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="users.html">Usuarios</a>
-                  <div><a href="crear.html" class="btn btn-danger ">Crear post</a></div>
-          </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
+      <a class="navbar-brand" href="timeline.html">
+        <img src="img/logo.jpeg" width="30" height="30" alt="" class="rounded-circle">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav ml-auto">
+          <a class="nav-item nav-link active" href="timeline.html">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="users.html">Usuarios</a>
+          <div><a href="crear.html" class="btn btn-danger ">Crear post</a></div>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
+  </div>
   <!-- fin Menu-->
-  <!-- inicio slide-->
-
-  <!-- inicio Main-->
+   <!-- inicio Main-->
   <!-- Page Content -->
   <div class="container">
-
     <div class="row">
-
       <!-- Post Content Column -->
       <div class="col-lg-8">
-
         <div id="post-details">
-
-
         </div>
-
-
-
-
-        <!-- Comments Form -->
+       <!-- Comments Form -->
         <div class="card my-4">
           <h5 class="card-header">deja un comentario:</h5>
           <div class="card-body">
@@ -85,69 +75,57 @@
         <div id="comments-post">
 
         </div>
-        </div>
+      </div>
 
 
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
 
-          <!-- Categories Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Categories</h5>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0" >
-                    <div  id="tagsList">
-
-
-                    </div>
-                   
-                    
-                  </ul>
-                </div>
+        <!-- Categories Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Categories</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <div id="tagsList">
+                  </div>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-   
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Cv5 Blog 2018</p>
-      </div>
-    </footer>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Cv5 Blog 2018</p>
+    </div>
+  </footer>
 
 
-    <script id="template-post" type="text/template">
-
-      <!-- Title -->
+  <script id="template-post" type="text/template">
+    <!-- Title -->
       <h1 class="mt-4">{{title}}</h1>
-
       <!-- Author -->
       <p class="lead">
         by
         <a href="#">{{userName}}</a>
       </p>
-
       <hr>
-
       <!-- Date/Time -->
       <p>{{FechaStr}}</p>
-
       <hr>
-
       <!-- Post Content -->
       <p class="lead">{{{body}}}</p>
-      <hr>
-
-      
+      <hr> 
   </script>
   <script id="template-coments" type="text/template">
-  
-<section class="comments">
+
+    <section class="comments">
     <article class="comment">
       <a class="comment-img" href="#non">
         <img src="img/face.png" alt="" width="50" height="50">
@@ -164,8 +142,8 @@
 
 </script>
 
-<script id="template-tags" type="text/template">
-<li>
+  <script id="template-tags" type="text/template">
+    <li>
   <a href="#">{{.}}</a>
 </li>
 </script>

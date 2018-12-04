@@ -18,8 +18,8 @@ function wsConnect(token) {
         switch (data.type) {
             case "new-comment":
             data.body = data.commentBody;
-            data.userName = data.userEmail;
-        
+         
+            toastr.info(data.userName+' ha hecho un comentario');
             var commentsTemplate = $('#template-coments').html();
             data.createdAt = moment(new Date()).format('hh : mm - DD/MM/YYYY');
 
@@ -29,6 +29,7 @@ function wsConnect(token) {
             case "view-post":
                 // TODO: cambias likes por views
                 $('#articulo-views-' + data.postId).text(data.views);
+               
                 break;
 
         }
@@ -40,7 +41,7 @@ let commentsObj;
 $(document).ready(function () {
     var commentsTemplate = $('#template-coments').html();
 
-   
+  
     var t = document.querySelector('#post')
     var p = document.querySelector('#articulo')
     var token = localStorage.getItem("TOKEN");

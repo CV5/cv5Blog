@@ -9,14 +9,10 @@
   <link rel="shortcut icon" type="image/png" href="img/logo.jpeg"/>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-  <script src="js/timeline.js"></script>
-  <script src="js/mustache.min.js"></script>
-  <script src="js/moment.js"></script>
-
-
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
@@ -30,6 +26,8 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
   <style>
     .slider{
         background: url("img/bg-3.png");
@@ -38,15 +36,22 @@
         height: 400px;
     }
         </style>
+
+<script src="js/timeline.js"></script>
+<script src="js/mustache.min.js"></script>
+<script src="js/moment.js"></script>
+
   <title>CV5 Blog </title>
 </head>
 
 <body>
+
   <!-- inicio Menu-->
   <div class="container-fluid bg-dark fixed-top text-center">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
       <a class="navbar-brand" href="timeline.html">
         <img src="img/logo.jpeg" width="30" height="30" alt="" class="rounded-circle">
+        
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +59,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="timeline.html">Home<span  id="notification"></span> <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="users.html">Usuarios</a>
                 <div><a href="crear.html" class="btn btn-danger">Crear post</a></div>
         </div>
@@ -73,7 +78,7 @@
   <!-- inicio Main-->
 
   <div class="container mb-5">
-    <h3>
+    <h3 class="animated infinite bounce delay-2s">
       CV5 Blog
     </h3>
     <hr>
@@ -120,9 +125,9 @@
           </p>
           
         <div class="card-footer" id="liked-div">
-          <a href="JavaScript:void(0)" class="card-link"><i class="fa {{likedClass}} liked liked-{{id}}" data-id="{{id}}" data-liked={{liked}} id="liked-button"></i> <span id="articulo-like-{{id}}"> {{likes}} Like<span></a>
-          <a href="#" class="card-link"><i class="fa fa-comment"></i> {{comments}} Comment</a>
-          <a href="#" class="card-link"><i class="fa fa-eye"></i>  <span id="articulo-views-{{id}}"> {{views}} </span>views</a>
+          <a href="JavaScript:void(0)" class="card-link"><i class="fa {{likedClass}} liked liked-{{id}}" data-id="{{id}}" data-liked={{liked}} id="liked-button-{{id}}"></i> <span id="articulo-like-{{id}}"> {{likes}}</span> Likes</a>
+          <a href="JavaScript:void(0)" class="card-link"><i class="fa fa-comment"></i> {{comments}} Comment</a>
+          <a href="JavaScript:void(0)" class="card-link"><i class="fa fa-eye"></i>  <span id="articulo-views-{{id}}"> {{views}} </span> views</a>
       </div>
         </div>
         
@@ -141,6 +146,7 @@
           </div>
         </div>
 </script>
+
 </body>
 
 </html>
