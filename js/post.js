@@ -1,4 +1,46 @@
+function wsConnect(token) {
+
+    console.log("WS- connect ", token);
+    var websocket = new WebSocket(`ws://68.183.27.173:8080/?token=${token}`);
+    websocket.onopen = function (evt) {
+        console.log(evt)
+    };
+    websocket.onclose = function (evt) {
+        console.log(evt)
+    };
+    websocket.onerror = function (evt) {
+        console.log(evt)
+    };
+
+    websocket.onmessage = function (evt) {
+        var data = JSON.parse(evt.data);
+        console.log(data);
+        switch (data.type) {
+            case "new-comment":
+            data.body = data.commentBody;
+            data.userName = data.userEmail;
+        
+            var commentsTemplate = $('#template-coments').html();
+            data.createdAt = moment(new Date()).format('hh : mm - DD/MM/YYYY');
+
+           
+            $("#comments-post").prepend(Mustache.render(commentsTemplate, data));
+                break;
+            case "view-post":
+                // TODO: cambias likes por views
+                $('#articulo-views-' + data.postId).text(data.views);
+                break;
+
+        }
+    };
+}
+
+let arrayMustacheComments = [];
+let commentsObj;
 $(document).ready(function () {
+    var commentsTemplate = $('#template-coments').html();
+
+   
     var t = document.querySelector('#post')
     var p = document.querySelector('#articulo')
     var token = localStorage.getItem("TOKEN");
@@ -6,6 +48,7 @@ $(document).ready(function () {
 
         location.href="index.html";
     }
+    wsConnect(token);
     var currentid = localStorage.getItem("currentId");
     
     fetch("http://68.183.27.173:8080/post/" + currentid + "", {
@@ -63,24 +106,21 @@ $(document).ready(function () {
         .then(comments => comments.json())
         .then(comments => {
             console.log(comments);
-            var commentsTemplate = $('#template-coments').html();
-            
+           
             Mustache.parse(commentsTemplate); // optional, speeds up future uses
-            let arrayMustacheComments = [];
+           
             
-
-            for (i in comments) {
             
-                let commentsObj = comments[i]
-                commentsObj.createdAt = moment(new Date(commentsObj.createdAt)).format('hh : mm - DD/MM/YYYY');
-    
             $("#comments-post").html('');
 
+            comments.forEach(comment => {
+                comment.createdAt = moment(new Date(comment.createdAt)).format('hh : mm - DD/MM/YYYY');
+            
+               arrayMustacheComments.push(Mustache.render(commentsTemplate, comment));
 
-         
-            arrayMustacheComments.push(Mustache.render(commentsTemplate, commentsObj));
-
-        };
+            });
+           
+            arrayMustacheComments.reverse();
             $("#comments-post").append(arrayMustacheComments.join(''));
         })
 

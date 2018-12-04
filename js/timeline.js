@@ -1,11 +1,44 @@
 var liked = true;
 
+function wsConnect(token) {
+
+    console.log("WS- connect ", token);
+    var websocket = new WebSocket(`ws://68.183.27.173:8080/?token=${token}`);
+    websocket.onopen = function (evt) {
+        console.log(evt)
+    };
+    websocket.onclose = function (evt) {
+        console.log(evt)
+    };
+    websocket.onerror = function (evt) {
+        console.log(evt)
+    };
+
+    websocket.onmessage = function (evt) {
+        var data = JSON.parse(evt.data);
+        console.log(data);
+        switch (data.type) {
+            case "likes":
+            $('#articulo-like-' + data.postId).text(data.likes);
+                break;
+            case "view-post":
+                // TODO: cambias likes por views
+                $('#articulo-views-' + data.postId).text(data.views);
+                break;
+
+        }
+    };
+}
+
 $(document).ready(function () {
     var token = localStorage.getItem("TOKEN");
+    
     if(token == null){
 
         location.href="index.html";
     }
+    wsConnect(token);
+    
     fetch("http://68.183.27.173:8080/users/me   ", {
         method: 'GET', // or 'PUT'
         headers: {
@@ -67,7 +100,7 @@ $(document).ready(function () {
     });
 
     $('#articulo').on('click', '.liked', function (r) {
-        console.log($(this).data('id'))
+  
         var liked = $(this).data('liked');
         var id =$(this).data('id');
     

@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Optional JavaScript -->
+  <link rel="shortcut icon" type="image/png" href="img/logo.jpeg"/>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
   <script src="js/timeline.js"></script>
@@ -119,9 +120,9 @@
           </p>
           
         <div class="card-footer" id="liked-div">
-          <a href="JavaScript:void(0)" class="card-link"><i class="fa {{likedClass}} liked liked-{{id}}" data-id="{{id}}" data-liked={{liked}} id="liked-button"></i>  {{likes}} Like</a>
-          <a href="#" class="card-link"><i class="fa fa-comment"></i> {{likes}} Comment</a>
-          <a href="#" class="card-link"><i class="fa fa-eye"></i>  {{views}} views</a>
+          <a href="JavaScript:void(0)" class="card-link"><i class="fa {{likedClass}} liked liked-{{id}}" data-id="{{id}}" data-liked={{liked}} id="liked-button"></i> <span id="articulo-like-{{id}}"> {{likes}} Like<span></a>
+          <a href="#" class="card-link"><i class="fa fa-comment"></i> {{comments}} Comment</a>
+          <a href="#" class="card-link"><i class="fa fa-eye"></i>  <span id="articulo-views-{{id}}"> {{views}} </span>views</a>
       </div>
         </div>
         
