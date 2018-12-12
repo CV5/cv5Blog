@@ -7,7 +7,7 @@ function showPost(id) {
     localStorage.setItem("currentId",id);
     
 }
-
+var count = 0;
 function wsConnect(token) {
 
     console.log("WS- connect ", token);
@@ -24,25 +24,25 @@ function wsConnect(token) {
 
     websocket.onmessage = function (evt) {
         var data = JSON.parse(evt.data);
-        var count = 0;
+        
+        console.log(data.type)
         switch (data.type) {
             case "likes":
-            
+            console.log(count);
                 $('#articulo-like-' + data.postId).text(data.likes);
                 if (data.likeType == "like") {
                     $('#liked-button-' + data.postId).removeClass('animated shake');
                     $('#liked-button-' + data.postId).addClass('animated heartBeat');
-                    $('#notification').addClass('badge badge-warning');
+                    $('#notification').addClass('badge badge-notify');
+                    // count =+ parseInt(1);
+                    // count = sumarNumeros(count, 1);
                    
-                    $('#notification').text(sumarNumeros(count, 1)); 
 
                 } else {
                     $('#liked-button-' + data.postId).removeClass('animated heartBeat');
                     $('#liked-button-' + data.postId).addClass('animated shake');
-                    $('#notification').addClass('badge badge-warning'); 
-                    
-                    $('#notification').text(sumarNumeros(count, 1)); 
-                }
+                    $('#notification').addClass('badge badge-notify'); 
+                    }
                 break;
             case "view-post":
                 // TODO: cambias likes por views
