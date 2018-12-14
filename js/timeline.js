@@ -75,7 +75,7 @@ function wsConnect(token) {
                 };
 
                 break;
-                case "user-connected":
+            case "user-connected":
                 toastr["info"](data.userEmail + " ha iniciado sección");
                 toastr.options = {
                     "closeButton": false,
@@ -96,12 +96,12 @@ function wsConnect(token) {
                 };
                 break;
 
-                }
-                };
+        }
+    };
 }
 
 $(document).ready(function () {
- 
+
     var token = localStorage.getItem("TOKEN");
     document.title = "CV5 Blog";
     if (token == null) {
@@ -111,12 +111,12 @@ $(document).ready(function () {
     wsConnect(token);
 
     fetch("http://68.183.27.173:8080/users/me", {
-        method: 'GET', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-        }
-    })
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        })
         .then(data => data.json())
         .then(data => {
             // var templateTags = $('#template-tagsColor').html();
@@ -138,12 +138,12 @@ $(document).ready(function () {
 
 
     fetch("http://68.183.27.173:8080/post", {
-        method: 'GET', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-        }
-    })
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        })
         .then(data => data.json())
         .then(data => {
 
@@ -159,7 +159,7 @@ $(document).ready(function () {
                 obj.body = data[i].body.substring(0, 100) + "...";
                 obj.likedClass = data[i].liked ? 'fa-heart' : 'fa-heart-o';
                 obj.liked = data[i].liked;
-                $('#news').text(data[i].title + " - by " +data[i].userName);
+                $('#news').text(data[i].title + " - by " + data[i].userName);
                 arrayMustache.push(Mustache.render(template, obj));
             };
             arrayMustache.reverse();
@@ -192,4 +192,24 @@ $(document).ready(function () {
 
         })
     });
+
+
+
+    $('#sessionarea').on('click', '.Logout', function (r) {
+            console.log("hola")
+        fetch(`http://68.183.27.173:8080/logout`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(response => {
+            localStorage.removeItem("TOKEN");
+            location.href="index.html";
+        })
+    });
+
+
+
+ 
 });

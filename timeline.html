@@ -106,7 +106,7 @@
       </div>
       <!--fin articulos -->
       <!--inicio aside -->
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-md-3" id="sessionarea">
         <div id="me"></div>
 
         </script>
@@ -156,11 +156,12 @@
       
   </script>
   <script id="template-me" type="text/template">
-    <div class="card border-primary mb-3" style="max-width: 18rem;">
+    <div id="sessionarea" class="card border-primary mb-3" style="max-width: 18rem;">
           <div class="card-header">{{name}}</div>
           <div class="card-body text-primary">
             <h5 class="card-title">{{email}}</h5>
             <p class="card-text">{{name}} fue creado a las {{createdAt}} y tiene {{posts}} post</p>
+            <button id="logout" type="button"  class="btn btn-outline-danger btn-rounded waves-effect Logout">Logout</button>
           </div>
         </div>
 </script>
