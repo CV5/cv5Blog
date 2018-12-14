@@ -1,41 +1,95 @@
 var liked = true;
 
+function sumarNumeros(n1, n2) {
+    return (parseInt(n1) + parseInt(n2));
+};
+
+function showPost(id) {
+
+    localStorage.setItem("currentId", id);
+
+}
+var count = 0;
+
+function wsConnect(token) {
+
+    console.log("WS- connect ", token);
+    var websocket = new WebSocket(`ws://68.183.27.173:8080/?token=${token}`);
+    websocket.onopen = function (evt) {
+        console.log(evt)
+    };
+    websocket.onclose = function (evt) {
+        console.log(evt)
+    };
+    websocket.onerror = function (evt) {
+        console.log(evt)
+    };
+
+    websocket.onmessage = function (evt) {
+        var data = JSON.parse(evt.data);
+
+        console.log(data.type)
+        switch (data.type) {
+            case "likes":
+                console.log(count);
+                $('#articulo-like-' + data.postId).text(data.likes);
+
+                if (data.likeType == "like") {
+                    $('#liked-button-' + data.postId).removeClass('animated shake');
+                    $('#liked-button-' + data.postId).addClass('animated heartBeat');
+                    
+                } else {
+                    $('#liked-button-' + data.postId).removeClass('animated heartBeat');
+                    $('#liked-button-' + data.postId).addClass('animated shake');
+
+                }
+                break;
+                case "view-post":
+                // TODO: cambias likes por views
+                $('#articulo-views-' + data.postId).text(data.views);
+                break;
+                case "new-post":
+                // TODO: cambias likes por views
+                document.title = "(1) CV5 Blog";
+                $('#news').text(data.userName +" ha creado un articulo nuevo.");
+                break;
+            case "new-comment":
+                toastr["info"](data.userName + " ha hecho un comentario");
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": 300,
+                    "hideDuration": 1000,
+                    "timeOut": 5000,
+                    "extendedTimeOut": 1000,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+
+                break;
+
+        }
+    };
+}
+
 $(document).ready(function () {
     var token = localStorage.getItem("TOKEN");
-    if(token == null){
+    document.title = "CV5 Blog";
+    if (token == null) {
 
-        location.href="index.html";
+        location.href = "index.html";
     }
+    wsConnect(token);
     var userID = localStorage.getItem("currentUserId");
-console.log(userID);
-    fetch(`http://68.183.27.173:8080/users/${userID}`, {
-        method: 'GET', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-        }
-    })
-    .then(data => data.json())
-    .then(data => {
-             // var templateTags = $('#template-tagsColor').html();
-             var templateMe = $('#template-me').html();
-
-             // Mustache.parse(templateTags); // optional, speeds up future uses
-             Mustache.parse(templateMe); // optional, speeds up future uses
-             
- 
-             $("#me").html('');
-             let arrayMustacheMe = [];
-             let objMe = data;
-             objMe.createdAt = moment(new Date(objMe.createdAt)).format('h:mm DD/MM/YYYY');
-             arrayMustacheMe.push(Mustache.render(templateMe, objMe));
-          
-             $("#me").append(arrayMustacheMe.join(''));
-    })
-
-
-
-    fetch(`http://68.183.27.173:8080/post?userId=${userID}`, {
+    console.log(userID);
+        fetch(`http://68.183.27.173:8080/users/${userID}`, {
             method: 'GET', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -44,10 +98,37 @@ console.log(userID);
         })
         .then(data => data.json())
         .then(data => {
-            console.log(data);
+            // var templateTags = $('#template-tagsColor').html();
+            var templateMe = $('#template-me').html();
+
+            // Mustache.parse(templateTags); // optional, speeds up future uses
+            Mustache.parse(templateMe); // optional, speeds up future uses
+
+            
+            $("#me").html('');
+            let arrayMustacheMe = [];
+            let objMe = data;
+            objMe.createdAt = moment(new Date(objMe.createdAt)).format('h:mm DD/MM/YYYY');
+            arrayMustacheMe.push(Mustache.render(templateMe, objMe));
+            $("#me").append(arrayMustacheMe.join(''));
+            localStorage.setItem('FavoriteUserId',data.id);
+        })
+
+
+
+        fetch(`http://68.183.27.173:8080/post?userId=${userID}`, {
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        })
+        .then(data => data.json())
+        .then(data => {
+
             var template = $('#template-articulo').html();
             Mustache.parse(template); // optional, speeds up future uses
-            
+
             $("#articulo").html('');
             let arrayMustache = [];
             for (i in data) {
@@ -60,9 +141,8 @@ console.log(userID);
                 arrayMustache.push(Mustache.render(template, obj));
             };
             arrayMustache.reverse();
-            
             $("#articulo").append(arrayMustache.join(''));
-           
+
         })
 
     $('#articulo').on('click', '.tituloArt', function (e) {
@@ -71,23 +151,23 @@ console.log(userID);
     });
 
     $('#articulo').on('click', '.liked', function (r) {
-        console.log($(this).data('id'))
+
         var liked = $(this).data('liked');
-        var id =$(this).data('id');
-    
+        var id = $(this).data('id');
+
         $(`.liked-${id}`).removeClass(liked ? 'fa-heart' : 'fa-heart-o').addClass(liked ? 'fa-heart-o' : 'fa-heart');
 
         $(this).data('liked', !liked);
 
         fetch(`http://68.183.27.173:8080/post/${id}/like`, {
-            method: liked ? 'DELETE':'PUT', // or 'PUT'
+            method: liked ? 'DELETE' : 'PUT', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             }
-        }).then(response =>{
+        }).then(response => {
 
-         
-        })   
+
+        })
     });
 });

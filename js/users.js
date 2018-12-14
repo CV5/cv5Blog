@@ -34,7 +34,12 @@ $(document).ready(function () {
         })
         $('#users').on('click', '.link', function (e) {
             localStorage.setItem("currentUserId", $(this).data('id'))
-            location.href = "timeline users.html";
+                       location.href = "timeline users.html";
+        });
+        $('#users').on('click', '.flink', function (e) {
+            localStorage.setItem("FavoriteUserId", $(this).data('id'))
+          
+            location.href = "timeline Favoritos.html";
         });
     
 });

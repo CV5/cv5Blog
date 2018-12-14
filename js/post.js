@@ -115,7 +115,8 @@ $(document).ready(function () {
             $("#comments-post").html('');
 
             comments.forEach(comment => {
-                comment.createdAt = moment(new Date(comment.createdAt)).format('hh : mm - DD/MM/YYYY');
+                comment.createdAt = moment().max(moment().add(1, 'd'));
+                // moment(new Date(comment.createdAt)).format('hh : mm - DD/MM/YYYY');
             
                arrayMustacheComments.push(Mustache.render(commentsTemplate, comment));
 

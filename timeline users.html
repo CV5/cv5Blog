@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Optional JavaScript -->
+  <link id="favicon" rel="shortcut icon" type="image/png" href="img/favicon.png" />
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
   <script src="js/timelineUsers.js"></script>
@@ -37,109 +38,118 @@
         height: 400px;
     }
         </style>
-  <title>CV5 Blog </title>
+
+<link href="css/headline.css" rel="stylesheet">
+
+<title>CV5 Blog </title>
 </head>
 
 <body>
-  <!-- inicio Menu-->
-  <div class="container-fluid bg-dark fixed-top text-center">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
-      <a class="navbar-brand" href="timeline.html">
-        <img src="img/logo.jpeg" width="30" height="30" alt="" class="rounded-circle">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link active" href="timeline.html">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="users.html">Usuarios</a>
-                <div><a href="crear.html" class="btn btn-danger ">Crear post</a></div>
-        </div>
-      </div>
-    </nav>
-  </div>
-  <!-- fin Menu-->
-  <!-- inicio slide-->
-  <div class="container fluid slider  d-flex justify-content-center align-items-center">
-    <div class="text-center text-white">
-      <h3>Aprende JavaScript en CV5 Blog</h3>
-      <h1 class="display">Contenido de interes para tus necesidades</h1>
-    </div>
-  </div>
-  <!-- fin slide-->
-  <!-- inicio Main-->
 
-  <div class="container mb-5">
-    <h3>
-      CV5 Blog
-    </h3>
-    <hr>
-    <!-- articulos -->
-    <div class="row mb-5">
-      <div class="col 12 col-md-9" id="articulo">
-
-
-      </div>
-      <!--fin articulos -->
-      <!--inicio aside -->
-      <div class="col-12 col-md-3">
-       <div id="me"></div>
-      </div>
-      <!--fin aside -->
-    </div>
-  </div>
-  <!-- fin Main-->
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Cv5 Blog 2018</p>
-    </div>
-  </footer>
-  <script id="template-articulo" type="text/template">
-
-    <div class="row mb-5 ">
-      <div class="col-3">
-        <img src="img/js.jpg" class="img-fluid">
-        <p class="lead text-center">{{FechaStr}}</p>
-      </div>
-      <div class="col-9 col-md-9">
-        <div id="articulo_{{id}}">
-          <a href="JavaScript:void(0)">
-            <h3 class="tituloArt" data-id="{{id}}"> {{title}} </h3>
-          </a>
-          {{#tags}}<a href="#"><span class="badge badge-success">{{.}}</span></a> {{/tags}}
-   
-        
-       
-          <p>
-            <h4> {{body}} </h4>
-            <h5>creado por: {{userName}} </h5>
-          </p>
+<!-- inicio Menu-->
+<div class="container-fluid bg-dark fixed-top text-center">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded navbar-inverse container">
+    <a class="navbar-brand" href="timeline.html">   
+          <img src="img/logo.jpeg" width="30" height="30" alt="" class="rounded-circle">
           
-        <div class="card-footer" id="liked-div">
-          <a href="JavaScript:void(0)" class="card-link"><i class="fa {{likedClass}} liked liked-{{id}}" data-id="{{id}}" data-liked={{liked}} id="liked-button"></i>  {{likes}} Like</a>
-          <a href="#" class="card-link"><i class="fa fa-comment"></i> {{likes}} Comment</a>
-          <a href="#" class="card-link"><i class="fa fa-eye"></i>  {{views}} views</a>
+              </a>
+            
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link active" href="timeline.html">Home</a>
+        <a class="nav-item nav-link active" href="timeline Favoritos.html">Favoritos</a>
+        <a class="nav-item nav-link active" href="users.html">Usuarios</a>
+        <div><a href="crear.html" class="btn btn-danger">Crear post</a></div>
       </div>
+    </div>
+  </nav>
+</div>
+    <!-- fin Menu-->
+    <!-- inicio slide-->
+    <div class="container fluid slider  d-flex justify-content-center align-items-center">
+      <div class="text-center text-white">
+        <h3>Aprende JavaScript en CV5 Blog</h3>
+        <h1 class="display">Contenido de interes para tus necesidades</h1>
+      </div>
+    </div>
+    <!-- fin slide-->
+    <!-- inicio Main-->
+  
+    <div class="container mb-5">
+        
+      <h3>
+        CV5 Blog
+      </h3>
+      <hr>
+      <!-- articulos -->
+      <div class="row mb-5">
+        <div class="col 12 col-md-9" id="articulo">
+  
+  
+        </div>
+        <!--fin articulos -->
+        <!--inicio aside -->
+        <div class="col-12 col-md-3">
+          <div id="me"></div>
+        </div>
+        <!--fin aside -->
+      </div>
+    </div>
+    <!-- fin Main-->
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Cv5 Blog 2018</p>
+      </div>
+    </footer>
+    <script id="template-articulo" type="text/template">
+  
+      <div class="row mb-5 ">
+        <div class="col-3">
+          <img src="img/js.jpg" class="img-fluid">
+          <p class="lead text-center">{{FechaStr}}</p>
+        </div>
+        <div class="col-9 col-md-9">
+          <div id="articulo_{{id}}">
+            <a href="JavaScript:void(0)">
+              <h3 class="tituloArt" data-id="{{id}}"> {{title}} </h3>
+            </a>
+            {{#tags}}<a href="#"><span class="badge badge-success">{{.}}</span></a> {{/tags}}
+     
+          
+         
+            <p>
+              <h4> {{{body}}} </h4>
+              <h5>creado por: {{userName}} </h5>
+            </p>
+            
+          <div class="card-footer" id="liked-div">
+            <a href="JavaScript:void(0)" class="card-link"><i class="fa {{likedClass}} liked liked-{{id}}" data-id="{{id}}" data-liked={{liked}} id="liked-button-{{id}}"></i> <span id="articulo-like-{{id}}"> {{likes}}</span> Likes</a>
+            <a href="JavaScript:void(0)" class="card-link"><i class="fa fa-comment"></i> {{comments}} Comment</a>
+            <a href="JavaScript:void(0)" class="card-link"><i class="fa fa-eye"></i>  <span id="articulo-views-{{id}}"> {{views}} </span> views</a>
+        </div>
+          </div>
+          
         </div>
         
+  
       </div>
-      
-
-    </div>
-      
-  </script>
-<script id="template-me" type="text/template">
- <div class="card border-primary mb-3" style="max-width: 18rem;">
-          <div class="card-header">{{name}}</div>
-          <div class="card-body text-primary">
-            <h5 class="card-title">{{email}}</h5>
-            <p class="card-text">{{name}} fue creado a las {{createdAt}} y tiene {{posts}} post</p>
+        
+    </script>
+    <script id="template-me" type="text/template">
+      <div class="card border-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">{{name}}</div>
+            <div class="card-body text-primary">
+              <h5 class="card-title">{{email}}</h5>
+              <p class="card-text">{{name}} fue creado a las {{createdAt}} y tiene {{posts}} post</p>
+            </div>
           </div>
-        </div>
-</script>
-</body>
-
-</html>
+  </script>
+  
+  </body>
+  
+  </html>

@@ -36,7 +36,9 @@ function postear() {
             'Authorization': 'Bearer ' + token
           }
         }).then(res => res.json())
-        .then(response => location.href="timeline.html")
+        .then(response => location.href="crear.html"
+        
+        )
         .catch(error => console.error('Error:', error));
 
         

@@ -25,7 +25,8 @@ function registrarse(){
             'Content-Type': 'application/json'
           }
         }).then(res => res.json())
-        .then(response => console.log('Success:', JSON.stringify(response)))
+        .then(response => location.href="index.html"
+        )
         .catch(error => console.error('Error:', error));
 }
 
